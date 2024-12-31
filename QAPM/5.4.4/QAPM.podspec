@@ -23,13 +23,13 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   
   # s.resources = ['QAPM.framework/js_sdk.js','QAPM.framework/*.cer']
-  s.resources = ['QAPM.framework/js_sdk.js']
+  s.resources = ['QAPM.framework/*.bundle']
   
   s.pod_target_xcconfig  = { 
     'ENABLE_BITCODE' => 'NO' ,
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
     'VALID_ARCHS' => 'arm64 x86_64 arm64e i386 armv7' 
   }
-  s.libraries    = "c", "c++"
+  s.libraries = 'z', 'c++', 'resolv'
   s.vendored_frameworks  = "QAPM.framework"
 end

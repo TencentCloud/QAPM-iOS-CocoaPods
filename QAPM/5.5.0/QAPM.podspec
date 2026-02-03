@@ -14,21 +14,18 @@ Pod::Spec.new do |s|
                       QAPM 是一款监控线上APP的性能组件
                       DESC
   s.homepage     = "https://cloud.tencent.com/product/qapm/"
-  s.source       = { :git => "https://github.com/TencentCloud/rum.git", :tag => "#{s.version}", :subdir => "rumApp" }
-  s.license      = { :type => "MIT", :file => "LICENSE" }
+  s.source       = { :git => "https://github.com/TencentCloud/rum.git", :tag => "#{s.version}" }
+  s.license      = { :type => "MIT", :file => "rumApp/LICENSE" }
   s.author       = "qapm_ios"
   s.ios.deployment_target = "8.0"
-  #s.source_files = "QAPM.framework/Headers/*.h"
-  #s.public_header_files  = "QAPM.framework/Headers/*.h"
   s.requires_arc = true
   
-  # s.resources = ['QAPM.framework/js_sdk.js','QAPM.framework/*.cer']
-  s.resources = ['QAPM.framework/*.bundle']
-  s.pod_target_xcconfig  = { 
-    'ENABLE_BITCODE' => 'NO' ,
+  s.vendored_frameworks = "rumApp/QAPM.framework"
+  s.resources = ['rumApp/QAPM.framework/*.bundle']
+  s.pod_target_xcconfig = { 
+    'ENABLE_BITCODE' => 'NO',
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64',
     'VALID_ARCHS' => 'arm64 x86_64 arm64e i386 armv7' 
   }
   s.libraries = 'z', 'c++', 'resolv'
-  s.vendored_frameworks  = "QAPM.framework"
 end
